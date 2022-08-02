@@ -19,7 +19,7 @@ export const getSerchMovies = async query => {
   const { data } = await moviesApiClient.get('/search/movie', {
     params: { query },
   });
-  return data;
+  return data.results;
 };
 export const getDetailsMovies = async id => {
   const { data } = await moviesApiClient.get(`movie/${id}`);

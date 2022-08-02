@@ -1,7 +1,46 @@
+import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getSerchMovies } from 'servise/service';
+import { Link } from 'react-router-dom';
+
 export const Movies = () => {
+  const [searchParams, setSerachParams] = useSearchParams();
+  const query = searchParams.get('query');
+  const [searchFilm, setSearchFilm] = useState([]);
+
+  const onSubmit = evt => {
+    evt.preventDefault();
+    setSerachParams({ query: evt.target.query.value });
+  };
+
+  useEffect(() => {
+    if (!searchParams.get('query')) {
+      return;
+    }
+    getSerchMovies(searchParams.get('query')).then(setSearchFilm);
+  }, [query, searchParams, setSearchFilm]);
+
   return (
-    <div>
-      <h1>Test Movies</h1>
-    </div>
+    <>
+      <form onSubmit={onSubmit}>
+        <input type="text" name="query" />
+        <button type="submit">Search a movie</button>
+      </form>
+
+      <hr />
+
+      <ul>
+        {searchFilm &&
+          searchFilm.map(el => {
+            return (
+              <li key={el.id}>
+                <Link to={`/movies/${el.id}`}>
+                  {el.title || el.original_name}
+                </Link>
+              </li>
+            );
+          })}
+      </ul>
+    </>
   );
 };
