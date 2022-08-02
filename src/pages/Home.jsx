@@ -3,7 +3,7 @@ import { getPoPMovies } from '../servise/service.js';
 import { Link } from 'react-router-dom';
 import { WrapperList, ListLink } from './Home.styled.js';
 
-export const Home = () => {
+const Home = () => {
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
@@ -30,3 +30,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FilmTitle, InfoWrapper, Wrapper } from './MovieDetails.styled.js';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [details, setDetails] = useState(null);
   const { movieId } = useParams();
 
@@ -57,3 +57,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;
