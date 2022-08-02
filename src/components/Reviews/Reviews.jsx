@@ -15,14 +15,17 @@ export const Reviews = () => {
     <>
       {
         <ul>
-          {reviews.length &&
+          {reviews.length > 0 ? (
             reviews.map(item => (
               <ReviewsItem
                 key={item.id}
                 name={item.author}
                 text={item.content}
               ></ReviewsItem>
-            ))}
+            ))
+          ) : (
+            <h1>We don't have any review for this movie</h1>
+          )}
         </ul>
       }
     </>

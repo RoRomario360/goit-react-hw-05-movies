@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 export const CastItem = ({ name, character, img }) => {
   return (
     <>
@@ -16,4 +18,12 @@ export const CastItem = ({ name, character, img }) => {
       </li>
     </>
   );
+};
+
+CastItem.propTypes = {
+  cast: PropTypes.shape({
+    character: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    img: PropTypes.string,
+  }),
 };
