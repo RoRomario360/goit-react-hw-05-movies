@@ -5,10 +5,10 @@ import { Movies } from 'pages/Movies';
 import { MovieDetails } from './MovieDetails/MovieDetails';
 import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
-
+import { NotFoundView } from 'pages/NotFoundPage';
 export const App = () => {
   return (
-    <div>
+    <>
       <Navigation />
       <Routes>
         <Route index element={<Home />}></Route>
@@ -17,7 +17,8 @@ export const App = () => {
           <Route path="cast" element={<Cast />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
+        <Route path="*" element={<NotFoundView />} />
       </Routes>
-    </div>
+    </>
   );
 };
