@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getSerchMovies } from 'servise/service';
 import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Movies = () => {
   const [searchParams, setSerachParams] = useSearchParams();
@@ -10,15 +11,22 @@ const Movies = () => {
   //
   const location = useLocation();
   //
+
   const onSubmit = evt => {
     evt.preventDefault();
+    if (evt.target.query.value === '') {
+      toast.error('Please add any text');
+      return;
+    }
     setSerachParams({ query: evt.target.query.value });
+    evt.target.query.value = '';
   };
 
   useEffect(() => {
     if (!searchParams.get('query')) {
       return;
     }
+
     getSerchMovies(searchParams.get('query')).then(setSearchFilm);
   }, [query, searchParams, setSearchFilm]);
 
