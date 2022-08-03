@@ -20,7 +20,7 @@ const MovieDetails = lazy(() =>
 
 export const App = () => {
   return (
-    <>
+    <div>
       <Navigation />
       <Routes>
         <Route
@@ -52,6 +52,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFoundView />} />
       </Routes>
-    </>
+    </div>
   );
 };
