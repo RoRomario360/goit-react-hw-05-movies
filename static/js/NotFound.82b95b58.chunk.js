@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_05_movies=self.webpackChunkgoit_react_hw_05_movies||[]).push([[187],{4520:function(e,c,i){i.r(c);var t=i(501),s=i(184);c.default=function(){return(0,s.jsxs)("div",{children:[(0,s.jsxs)("h2",{children:["Page now found go to the ",(0,s.jsx)(t.rU,{to:"/",children:"HomePage"})]}),(0,s.jsx)("img",{src:"https://i.gifer.com/origin/3f/3fcf565ccc553afcfd89858c97304705.gif",alt:"TRAVOLTA"})]})}}}]);
+//# sourceMappingURL=NotFound.82b95b58.chunk.js.map
