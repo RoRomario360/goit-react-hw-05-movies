@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const NotFoundView = () => {
+const NotFoundView = () => {
   return (
     <div>
       <h2>
@@ -13,3 +13,5 @@ export const NotFoundView = () => {
     </div>
   );
 };
+
+export default NotFoundView;

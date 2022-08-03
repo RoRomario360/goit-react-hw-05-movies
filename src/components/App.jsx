@@ -2,9 +2,9 @@ import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router';
 import { Loader } from './Loader/Loader';
 import { Navigation } from './Navigation/Navigation';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
-import { NotFoundView } from 'pages/NotFoundPage';
+// import { Cast } from './Cast/Cast';
+// import { Reviews } from './Reviews/Reviews';
+// import { NotFoundView } from 'pages/NotFoundPage';
 //FIXME:
 // import Home from 'pages/Home';
 // import Movies from 'pages/Movies';
@@ -16,6 +16,13 @@ const Movies = lazy(() =>
 );
 const MovieDetails = lazy(() =>
   import('./MovieDetails/MovieDetails' /* webpackChunkName: "MoviesDetails" */)
+);
+const Cast = lazy(() => import('./Cast/Cast' /* webpackChunkName: "Cast" */));
+const Reviews = lazy(() =>
+  import('./Reviews/Reviews' /* webpackChunkName: "Reviews" */)
+);
+const NotFoundView = lazy(() =>
+  import('pages/NotFoundPage' /* webpackChunkName: "NotFound" */)
 );
 
 export const App = () => {
@@ -47,10 +54,31 @@ export const App = () => {
             </Suspense>
           }
         >
-          <Route path="cast" element={<Cast />}></Route>
-          <Route path="reviews" element={<Reviews />}></Route>
+          <Route
+            path="cast"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Cast />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="reviews"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Reviews />
+              </Suspense>
+            }
+          ></Route>
         </Route>
-        <Route path="*" element={<NotFoundView />} />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<Loader />}>
+              <NotFoundView />
+            </Suspense>
+          }
+        />
       </Routes>
     </div>
   );
